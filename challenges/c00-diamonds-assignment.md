@@ -100,12 +100,13 @@ document your observations.
 
 ## Your code here!
 
-ggplot (data = diamonds)+ #starting the ggplot
-  geom_point(  #creates the visual elements for plot (geometry)
-    mapping = aes (  #asthetic mapping ( mapping of variables in a dataframe to visual elements in the graph)
-    x = carat, # x variable on graph
-    y = price  # y variable on graph
-  )
+diamonds %>%
+  ggplot() + ##creating the plot
+  geom_point(
+    mapping = aes( #setting up the aesthetics
+      x = carat, #setting x variable
+      y = price #setting y variable
+    )
   )
 ```
 
@@ -123,14 +124,20 @@ ggplot (data = diamonds)+ #starting the ggplot
 ## TASK: Plot `price`, `carat`, and `cut` below
 ## Your code here!
 
-ggplot (data = diamonds)+ #starting the ggplot
-  geom_point(aes
-            (x = carat, 
-            y = price, 
-            color = cut)) # additional `variable`cut, color argument to aes()
+diamonds %>%
+  ggplot() + ##creating the plot
+  geom_point(
+    mapping = aes( #setting up the aesthetics
+      x = carat, #setting x variable
+      y = price, #setting y variable
+      color = cut # additional `variable`cut, color argument to aes()
+    )
+  )
 ```
 
 ![](c00-diamonds-assignment_files/figure-gfm/q2-task-1.png)<!-- -->
+
+  
 
 **Observations**:
 
@@ -139,8 +146,11 @@ ggplot (data = diamonds)+ #starting the ggplot
   shows that the Ideal cut diamonds raise in price before the lesser
   cuts even if they are the same carat, however its a very small change.
   The carat of the diamond affects the price far greater. Additionally,
-  Higher grade cuts like Ideal and premium don’t go up as many carats as
-  lower grade cuts like fair.
+  higher grade cuts like Ideal and Premium tend to cluster at lower
+  carats, while lower grade cuts like Fair appear more spread out toward
+  higher carats though this seems to be a pattern in this particular
+  sample rather than a strict rule, since there’s still plenty of
+  overlap across all cut grades in the lower carat range.
 
 # Communication
 
