@@ -28,7 +28,7 @@ Unlike exercises, **challenges will be graded**. The following rubrics define ho
 <!-- ------------------------- -->
 
 | Category | Needs Improvement | Satisfactory |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Effort | Some task **q**'s left unattempted | All task **q**'s attempted |
 | Observed | Did not document observations, or observations incorrect | Documented correct observations based on analysis |
 | Supported | Some observations not clearly supported by analysis | All observations clearly supported by analysis (table, graph, etc.) |
@@ -62,13 +62,14 @@ In this first stage, you will explore the `diamonds` dataset and document your o
 ## Your code here!
 
 diamonds %>%
-  ggplot() + ##creating the plot
-  geom_point(
+  ggplot(
     mapping = aes( #setting up the aesthetics
       x = carat, #setting x variable
       y = price #setting y variable
     )
-  )
+    
+  ) + ##creating the plot
+  geom_point()
   
   
 
@@ -85,14 +86,15 @@ diamonds %>%
 ## Your code here!
 
 diamonds %>%
-  ggplot() + ##creating the plot
-  geom_point(
+  ggplot(
     mapping = aes( #setting up the aesthetics
       x = carat, #setting x variable
       y = price, #setting y variable
       color = cut # additional `variable`cut, color argument to aes()
     )
-  )
+    
+  ) + ##creating the plot
+  geom_point()
 
 
 

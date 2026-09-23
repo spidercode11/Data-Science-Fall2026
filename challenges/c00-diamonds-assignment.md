@@ -101,13 +101,14 @@ document your observations.
 ## Your code here!
 
 diamonds %>%
-  ggplot() + ##creating the plot
-  geom_point(
+  ggplot(
     mapping = aes( #setting up the aesthetics
       x = carat, #setting x variable
       y = price #setting y variable
     )
-  )
+    
+  ) + ##creating the plot
+  geom_point()
 ```
 
 ![](c00-diamonds-assignment_files/figure-gfm/q1-task-1.png)<!-- -->
@@ -125,14 +126,15 @@ diamonds %>%
 ## Your code here!
 
 diamonds %>%
-  ggplot() + ##creating the plot
-  geom_point(
+  ggplot(
     mapping = aes( #setting up the aesthetics
       x = carat, #setting x variable
       y = price, #setting y variable
       color = cut # additional `variable`cut, color argument to aes()
     )
-  )
+    
+  ) + ##creating the plot
+  geom_point()
 ```
 
 ![](c00-diamonds-assignment_files/figure-gfm/q2-task-1.png)<!-- -->
