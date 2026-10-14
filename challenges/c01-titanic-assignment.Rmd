@@ -26,7 +26,7 @@ Unlike exercises, **challenges will be graded**. The following rubrics define ho
 <!-- ------------------------- -->
 
 | Category | Needs Improvement | Satisfactory |
-|------------------|-----------------------------|-------------------------|
+|------------------------|------------------------|------------------------|
 | Effort | Some task **q**'s left unattempted | All task **q**'s attempted |
 | Observed | Did not document observations, or observations incorrect | Documented correct observations based on analysis |
 | Supported | Some observations not clearly supported by analysis | All observations clearly supported by analysis (table, graph, etc.) |
@@ -146,18 +146,20 @@ df_prop %>%
 ```{r q5-task}
 
 
-df_titanic %>% 
-  ggplot(aes(x = Class, y = n, fill = Sex)) +
+df_prop %>%
+  filter(Survived == "Yes") %>%
+  ggplot(aes(x = Class, y = Prop, fill = Sex)) +
   geom_col(position = "dodge") +
-  facet_grid(Age ~ Survived)
+  facet_grid(Age ~ .)
 ```
 
 **Observations**:
 
-- These graphs show the raw number of female, male, child, and adult passengers that did survive and didn't survive. Graph the shows adults that didnt survive, shows that there were for more male passengers on board then female and that most of the female passengers were saved, except for the 3rd class, which shows that they still had class priority even for the women. Similarly, the graph the shows children that didnt survive, only children in class 3 didnt survive.
-- If you saw something *fishy* in q4 above, use your new plot to explain the fishy-ness.
-  - 
-    - With 4 different distinct graphs to show class, sex and age, for who survived and who didn't. You can actually see the different data rather then stacking it all into one graph. If used the df_prop, it would display the proportions individually in their specific graph.
+- These graphs show the proportion of male, female, child, and adult passengers in each class that survived. In the adult graph, a much higher share of women survived than men in every class, and most of the women were saved except in 3rd class, where less than half of them made it. So class still seemed to matter, even for the women. In the child graph, every child in 1st and 2nd class survived, and 3rd class was the only class where some children didn’t survive.
+
+  ## If you saw something *fishy* in q4 above, use your new plot to explain the fishy-ness.
+
+  - With 4 different distinct graphs to show class, sex and age, for who survived and who didn't. You can actually see the different data rather then stacking it all into one graph. If used the df_prop, it would display the proportions individually in their specific graph.
 
 # Notes
 

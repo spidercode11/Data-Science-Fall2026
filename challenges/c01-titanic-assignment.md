@@ -247,25 +247,29 @@ df_prop %>%
 additional variables!
 
 ``` r
-df_titanic %>% 
-  ggplot(aes(x = Class, y = n, fill = Sex)) +
+df_prop %>%
+  filter(Survived == "Yes") %>%
+  ggplot(aes(x = Class, y = Prop, fill = Sex)) +
   geom_col(position = "dodge") +
-  facet_grid(Age ~ Survived)
+  facet_grid(Age ~ .)
 ```
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_col()`).
 
 ![](c01-titanic-assignment_files/figure-gfm/q5-task-1.png)<!-- -->
 
 **Observations**:
 
-- These graphs show the raw number of female, male, child, and adult
-  passengers that did survive and didn’t survive. Graph the shows adults
-  that didnt survive, shows that there were for more male passengers on
-  board then female and that most of the female passengers were saved,
-  except for the 3rd class, which shows that they still had class
-  priority even for the women. Similarly, the graph the shows children
-  that didnt survive, only children in class 3 didnt survive.
+- These graphs show the proportion of male, female, child, and adult
+  passengers in each class that survived. In the adult graph, a much
+  higher share of women survived than men in every class, and most of
+  the women were saved except in 3rd class, where less than half of them
+  made it. So class still seemed to matter, even for the women. In the
+  child graph, every child in 1st and 2nd class survived, and 3rd class
+  was the only class where some children didn’t survive.
 
-- ## If you saw something *fishy* in q4 above, use your new plot to explain the fishy-ness.
+  ## If you saw something *fishy* in q4 above, use your new plot to explain the fishy-ness.
 
   - With 4 different distinct graphs to show class, sex and age, for who
     survived and who didn’t. You can actually see the different data
