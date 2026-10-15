@@ -184,13 +184,9 @@ in the dataset.
 
 ``` r
 ## TODO: Adjust the data, assign to df_q2
-df_q2 <- 
-  df_michelson %>%
-  
-  mutate(
-    VelocityVacuum = Velocity +92
-  )
-  
+df_q2 <- df_michelson %>%
+  mutate(VelocityVacuum = Velocity + 92)
+
 df_q2
 ```
 
@@ -236,15 +232,11 @@ human judgment.\[2\]
 ## TODO: Compare Michelson's estimate and error against the true value
 ## Your code here!
 
-df_q3 <- 
-  df_michelson %>%
-  
+df_q3 <- df_michelson %>%
   mutate(
-    
-    VelocityVacuum = Velocity +92,
+    VelocityVacuum = Velocity + 92,
     error = VelocityVacuum - LIGHTSPEED_MICHELSON
   ) %>%
-  
   summarize(
     mean_error = mean(error),
     mean_abs_error = mean(abs(error))
