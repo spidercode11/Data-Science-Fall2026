@@ -111,18 +111,14 @@ df_michelson %>% glimpse()
 
 ```{r q1-task}
 ## TODO: Compute summaries
-df_q1 <- df_michelson
-df_q1 %>%
-  
+df_q1 <- df_michelson %>%
   group_by(Distinctness) %>%
-  
   summarize(
-    
-  n = n(),
-    
- Velocity_mean = mean(Velocity)
- 
-  ) %>%
+    n = n(),
+    Velocity_mean = mean(Velocity)
+  )
+
+df_q1 %>%
   arrange(desc(Distinctness)) %>%
   knitr::kable()
 ```
@@ -308,7 +304,7 @@ around the center with no single day standing out.
 
 ### **q5** You have access to a few other variables. Construct a **q least three** visualizations of `VelocityVacuum` against these other factors. Are there other patterns in the data that might help explain the difference between Michelson's estimate and `LIGHTSPEED_VACUUM`?
 
-##  
+## 
 
 ```{r}
 df_q2 %>%
@@ -320,12 +316,12 @@ df_q2 %>%
 
 **Observations**:
 
-There's a slight positive trend, VelocityVacuum tends to be higher on
-warmer days, but the scatter around the line is large compared to the
-trend itself, so temperature only explains a small part of the
-variation. This is plausible physically, since air temperature affects
-light's speed through air, which could be a source of the systematic
-error
+The line slopes up a little, but the points are spread so far around it
+that I wouldn’t call this a real relationship between temperature and
+VelocityVacuum. Just at 72°F the measurements run from about 299,810 to
+300,160, a much bigger spread than the roughly 75 km/s the line rises
+over the whole temperature range, so I can’t say temperature has a
+meaningful effect based on this plot.
 
 ```{r}
 
@@ -337,12 +333,14 @@ df_q2 %>%
 
 **Observations**:
 
-There's a clear upward trend by Distinctness. Median VelocityVacuum goes
-from about 299900 at Distinctness 1, to 299950 at 2, to just over 300000
-at 3. Clearer readings line up with higher measured velocity, which
-tracks, since Distinctness is Michelson's own call on how clearly he
-could see the measurement. The murkier readings probably dragged in more
-error, and the clean ones probably landed closer to the truth.
+The median VelocityVacuum goes up a little with Distinctness, about
+299,920 at 1, 299,940 at 2 and 299,955 at 3, but that’s small next to
+how spread out each group is. The boxes overlap a lot and Distinctness 1
+only has 15 measurements, so I can’t call this trend significant. The
+clearer readings weren’t more accurate either. Every group sits above
+LIGHTSPEED_VACUUM (299,792.458 km/s), so Distinctness 1, with the lowest
+values, ends up closest to the true value, while the clearest readings
+land a bit further from it.
 
 ```{r}
 
@@ -361,6 +359,13 @@ VelocityVacuum goes from around 300000 in early June down to about
 shifting over the month, either way it looks systematic rather than
 random, which fits as another possible piece of the bias behind the
 error
+
+Do any patterns explain the difference between Michelson’s estimate and
+LIGHTSPEED_VACUUM? No. Temperature and date only show weak trends with a
+lot of noise, and the Distinctness groups mostly overlap. Also, almost
+every measurement is above the true value whatever the temperature,
+Distinctness, or date was. The error shows up in every graph so it looks
+like systematic error that none of the variables can explain.
 
 ## Bibliography
 
